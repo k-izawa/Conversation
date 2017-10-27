@@ -38,15 +38,15 @@ function requestApi(role, data) {
     url: url,
     data: JSON.stringify(data),
     contentType: 'application/json',
-    username: window.btoa(username),
-    password: window.btoa(password),
+    // username: username,
+    // password: password,
     xhrFields: {
       withCredentials: true
     },
-    // beforeSend: function (xhr) {
-    //   // var credentials = $.base64.encode(credentials);
-    //   xhr.setRequestHeader("Authorization", "Basic " + credential);
-    // },
+    beforeSend: function (xhr) {
+      // var credentials = $.base64.encode(credentials);
+      xhr.setRequestHeader("Authorization", "Basic " + credential);
+    },
     
     dataType: 'json', //データをjson形式で飛ばす
   
