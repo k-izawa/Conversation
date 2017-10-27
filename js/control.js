@@ -40,6 +40,9 @@ function requestApi(role, data) {
     contentType: 'application/json',
     // username: username,
     // password: password,
+    xhrFields: {
+      withCredentials: true
+    },
     beforeSend: function (xhr) {
       // var credentials = $.base64.encode(credentials);
       xhr.setRequestHeader("Authorization", "Basic " + credential);
