@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<title>WatsonConversationTool</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="js/control.js"></script>
+	<script type="text/javascript" src="js/jquery.json-viewer.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/starter-template.css" rel="stylesheet">
+	<link href="css/jquery.json-viewer.css" rel="stylesheet">
+	<link href="css/design.css" rel="stylesheet">	
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">ChatTool</a>
+			</div>
+			<div class="navbar-form navbar-right">
+				<div class="form-group">
+					<input type="text" class="form-control" name="username" placeholder="username">
+					<input type="text" class="form-control" name="password" placeholder="password">
+					<input type="text" class="form-control" name="workspace" placeholder="workspaceID">
+					<button onclick="connect()" type="button" class="btn btn-default">接続</button>
+				</div>
+				<button onclick="reset()"　 type="button" class="btn btn-default">リセット</button>
+			</div>
+		</div>
+	</nav>
+
+	<div class="alert alert-danger hidden" role="alert">
+		資格情報を入力してください。
+	</div>
+
+	<!-- <div class="container"> -->
+		<section class="container">
+			<!-- <h3>資格情報</h3>
+			<form>
+				<div class="form-group">
+					<input type="text" name="username" placeholder="username" class="form-control">
+				</div>
+				<div class="form-group">
+					<input type="text" name="password" placeholder="password" class="form-control">
+				</div>
+				<div class="form-group">
+					<select class="form-control" id="urlSel">
+						<option>https://gateway.watsonplatform.net/natural-language-classifier/api</option>
+						<option>https://gateway.watson-j.jp/natural-language-classifier/api</option>
+					</select>
+				</div>
+			</form> -->
+
+		<div class="page">
+			<section class="card">
+				<!-- <div class="card-header">
+					ヘッダー
+				</div> -->
+				<div class="card-block">
+					
+				</div>
+			</section>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="adjust">
+				<form class="form" onsubmit="return false;">
+					<div class="input-group">
+						<input id="input" name="userinput" type="text" class="form-control" placeholder="Comment">
+						<span class="input-group-btn">
+							<button onclick="userInput()" class="btn btn-default">SEND</button>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
