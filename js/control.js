@@ -45,7 +45,7 @@ function requestApi(role, data) {
     },
     beforeSend: function (xhr) {
       // var credentials = $.base64.encode(credentials);
-      xhr.setRequestHeader("Authorization", "Basic " + credential);
+      xhr.setRequestHeader("Authorization", "Bearer " + credential);
     },
     
     dataType: 'json', //データをjson形式で飛ばす
