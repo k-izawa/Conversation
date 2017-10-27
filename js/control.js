@@ -1,6 +1,10 @@
 var context = "";
 var url = ""
 var credential = "";
+var password = "";
+var username = "";
+var workspace = "";
+
 var roleParam = {
   user:  { side: "right",  image: "user.png" },
   bot:   { side: "left",   image: "watson-logo.png" }
@@ -28,31 +32,60 @@ function connect() {
 }
 
 function requestApi(role, data) {
-  var request = new XMLHttpRequest();
 
-  request.open("POST", url);
-  request.setRequestHeader('Authorization', 'Basic ' + credential);
-  request.setRequestHeader('Content-Type', 'application/json');
-  request.withCredentials = true;
-  request.onreadystatechange = function () {
-    if (request.readyState != 4) {
-      // リクエスト中
-    } else if (request.status != 200) {
-      console.log(request);
-    } else {
-      // 取得成功
-      console.log(request);
-      json = JSON.parse(request.responseText);
-      addMessage(role, json.output.text);
+  $.ajax({
+    type: 'POST',
+    url: url,
+    data: JSON.stringify(data),
+    contentType: 'application/json',
+    // username: username,
+    // password: password,
+    beforeSend: function (xhr) {
+      // var credentials = $.base64.encode(credentials);
+      xhr.setRequestHeader("Authorization", "Basic " + credential);
+    },
+    
+    dataType: 'json', //データをjson形式で飛ばす
+  
+    success: function (json_data) {   // 200 OK時
+      // JSON Arrayの先頭が成功フラグ、失敗の場合2番目がエラーメッセージ
+      console.log(json_data.output.text[0]);
+      context = json_data.context;
+      addMessage(role, json_data.output.text[0]);
+    },
+    error: function () {         // HTTPエラー時
+      alert("Server Error. Pleasy try again later.");
+    },
+    complete: function () {      // 成功・失敗に関わらず通信が終了した際の処理
     }
-  };
-  request.send(JSON.stringify(data));
+  })
+
+
+  // var request = new XMLHttpRequest();
+
+  // request.open("POST", url);
+  // request.setRequestHeader('Authorization', 'Basic ' + credential);
+  // request.setRequestHeader('Content-Type', 'application/json');
+  // request.withCredentials = true;
+  // request.onreadystatechange = function () {
+  //   if (request.readyState != 4) {
+  //     // リクエスト中
+  //   } else if (request.status != 200) {
+  //     console.log(request);
+  //   } else {
+  //     // 取得成功
+  //     console.log(request);
+  //     json = JSON.parse(request.responseText);
+  //     addMessage(role, json.output.text);
+  //   }
+  // };
+  // request.send(JSON.stringify(data));
 }
 
 function addMessage(role, text) {
   var imageDiv   = "<div id='icon' class='media-" + roleParam[role]["side"] + "'><img src='img/" + roleParam[role]["image"] + "'></div>";
   var messageDiv = "<div class='media-body " + roleParam[role]["side"] + "-body'><div>" + text + "</div></div>"
-  context = json.context;
+   
   if (role == "bot") {
     message = $("<div id='" + roleParam[role]["side"] + "' class='media'>" + imageDiv + messageDiv + "</div>");
   } else {
