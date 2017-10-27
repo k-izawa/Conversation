@@ -45,10 +45,10 @@ function requestApi(role, data) {
     },
     beforeSend: function (xhr) {
       // var credentials = $.base64.encode(credentials);
-      xhr.setRequestHeader("Authorization", "Bearer " + credential);
+      xhr.setRequestHeader("Authorization", "Basic " + credential);
     },
-    jsonpCallback:'collback',
-    dataType: 'jsonp', //データをjson形式で飛ばす
+    
+    dataType: 'json', //データをjson形式で飛ばす
   
     success: function (json_data) {   // 200 OK時
       // JSON Arrayの先頭が成功フラグ、失敗の場合2番目がエラーメッセージ
