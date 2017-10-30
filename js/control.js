@@ -33,6 +33,20 @@ function connect() {
 
 function requestApi(role, data) {
 
+
+  $.ajax({
+    url: 'https://gateway.watsonplatform.net/authorization/api/v1/token?url=https://gateway.watsonplatform.net/conversation/api',
+    beforeSend: function(xhr) {
+         xhr.setRequestHeader("Authorization", "Bearer "+credential);
+    }, success: function(data){
+        alert(data);
+        //process the JSON data etc
+    },
+    error: function () {         // HTTPエラー時
+      alert("ダメです");
+    },
+})
+
   $.ajax({
     type: 'POST',
     url: url,
@@ -40,8 +54,7 @@ function requestApi(role, data) {
     headers:{
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: "Basic " + credential,
-      'Access-Control-Allow-*':'*'
+      Authorization: "Basic " + credential
     },
     //contentType: 'application/json',
     // username: username,
