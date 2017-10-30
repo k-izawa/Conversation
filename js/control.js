@@ -33,20 +33,6 @@ function connect() {
 
 function requestApi(role, data) {
 
-
-  $.ajax({
-    url: 'https://gateway.watsonplatform.net/authorization/api/v1/token?url=https://gateway.watsonplatform.net/conversation/api',
-    beforeSend: function(xhr) {
-         xhr.setRequestHeader("Authorization", "Bearer "+credential);
-    }, success: function(data){
-        alert(data);
-        //process the JSON data etc
-    },
-    error: function () {         // HTTPエラー時
-      alert("ダメです");
-    },
-})
-
   $.ajax({
     type: 'POST',
     url: url,
@@ -54,7 +40,8 @@ function requestApi(role, data) {
     headers:{
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: "Basic " + credential
+      //Authorization: "Basic " + credential
+      "X-Watson-Authorization-Token":"Zvhe3Bepe2%2FccFCbgd8CxOSW5lU2Gd0AuC8t4plMWeGbUAxocfA3vtysLXjSo5wHO91VgwF54kkOijMAaADGOOJCyhphAW%2B77KdalgkL8fWNRJBCPol5T9qngQ4%2FLzHofWUtr%2FjbWSgaDIah%2BnVLY1rkZzuDDHp%2FCw46msRitX4IjA7DgX7NAR1ZAvt0rz6mFJNKEVJ2Dlb9IUDyxRty3LQX%2BvAm206XcD6G%2BjnOVzw%2FLPsiR6fn2iWzpFeX5DJ7Mz5vFXnC22YTPTNvU7qbU8%2FxdqlRdFYpGXx8ZpTz4WO15WSXywrmE%2B1G7ayfS5k%2FPeQMUcblBHA7qG1Ac5TaBLuV6BcUiFYlM7JLEdI1XsVcDxThCOrD%2B0G%2FCvon5TSWob5MYwr2kQaeGbUq0H40bj12eRXZz0Nfr%2FT3na7Exaz2gG5MEHo7D%2BXFmgumqilX4dfEqA0EL3npHT4FSJUwxrBQGPUdZv5wl61DCxGl9%2B7e7nmfzvJAeN9Zth2hV%2F%2BeRz7yb4yVOJ8RXS43p2PkonQ%2FoNmHemyUuo%2BrWQEZ%2Fsl%2BwVasfnU7kNBO73IzwTTdHBdhUvY7zR7TPXst895VhKXdoZCZpOke1q6Snv6g02Yip1mDlRRy91tDgXu92ukrMOjV5gSHAw8nvYv1NfnaO7tm0XUcPrsuYmL4vxqt8lv7LlckGFjbtvrknlvzLoJVDB6LsnEpOHKfHFtfnGVdsRHqsBiPLcAQZGxPTQN7%2BFbd10fXVJKvybc3gsxy2XjTw4W7QGe%2F8xIgKNneP4aXrcb6N4u5u2XWIO%2Bn%2FsN25Aj9qOmvPP2wJBLJGBC9y0mNT%2BSNlRaKAglT%2Byeh7YdW%2BlW4PJ3SRjYYQ%2BeX1%2BfMfq1XtVJ3MwZwI4QpHAPEV8LBIZL4Pff56YTidvy6w9BAr7EfDE3bHonMBpI5JWCYt5RaMis%2B%2B82ehgnAjKM8eW3zc53Xuf6VZPzTqm1ZzhcUaXa5csdJFwv"
     },
     //contentType: 'application/json',
     // username: username,
