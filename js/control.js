@@ -25,7 +25,7 @@ function connect() {
   } else {
     $(".alert").addClass("hidden");
     credential = window.btoa(username + ':' + password);
-    url = url + workspace +"/message?version=2017-05-26&details=true"
+    url = url + workspace +"/message?version=2017-05-26"
   }
 
   requestApi(role, data);
