@@ -40,7 +40,8 @@ function requestApi(role, data) {
     headers:{
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: "Basic " + credential
+      Authorization: "Basic " + credential,
+      'Access-Control-Allow-*':'*'
     },
     //contentType: 'application/json',
     // username: username,
