@@ -37,16 +37,21 @@ function requestApi(role, data) {
     type: 'POST',
     url: url,
     data: JSON.stringify(data),
-    contentType: 'application/json',
+    headers:{
+      Accept: 'application/vnd.heroku+json; version=3',
+      contentType: 'application/json',
+      Authorization: "Basic " + credential
+    },
+    //contentType: 'application/json',
     // username: username,
     // password: password,
     xhrFields: {
       withCredentials: true
     },
-    beforeSend: function (xhr) {
-      // var credentials = $.base64.encode(credentials);
-      xhr.setRequestHeader("Authorization", "Basic " + credential);
-    },
+    // beforeSend: function (xhr) {
+    //   // var credentials = $.base64.encode(credentials);
+    //   xhr.setRequestHeader("Authorization", "Basic " + credential);
+    // },
     
     dataType: 'json', //データをjson形式で飛ばす
   
