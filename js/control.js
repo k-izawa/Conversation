@@ -38,8 +38,8 @@ function requestApi(role, data) {
     url: url,
     data: JSON.stringify(data),
     headers:{
-      Accept: 'application/vnd.heroku+json; version=3',
-      contentType: 'application/json',
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
       Authorization: "Basic " + credential
     },
     //contentType: 'application/json',
