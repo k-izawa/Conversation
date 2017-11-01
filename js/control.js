@@ -37,7 +37,7 @@ function requestApi(role, data) {
 
   var request = new XMLHttpRequest();
 
-  request.open("GET", "http://relayforcors.azurewebsites.net/?url=https://gateway.watsonplatform.net/authorization/api/v1/token?url=https://gateway.watsonplatform.net/conversation/api", true, username, password);
+  request.open("GET", "http://relayforcors.azurewebsites.net/?url=https://"+username+":"+password+"@gateway.watsonplatform.net/authorization/api/v1/token?url=https://gateway.watsonplatform.net/conversation/api");
   // request.setRequestHeader('Authorization', 'Basic ' + credential);
   //request.setRequestHeader('Content-Type', 'application/json');
   //request.withCredentials = true;
@@ -50,7 +50,7 @@ function requestApi(role, data) {
       // 取得成功
       console.log(request);
       json = JSON.parse(request.responseText);
-      addMessage(role, json.output.text);
+      //addMessage(role, json.output.text);
     }
   };
   request.send(null);
