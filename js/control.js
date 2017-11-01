@@ -50,7 +50,9 @@ function requestApi(role, data) {
       // 取得成功
       console.log(request);
       json = JSON.parse(request.responseText);
-      //addMessage(role, json.output.text);
+      console.log(json.token);
+      callConv(json.token,data);
+//      addMessage(role, json.output.text);
     }
   };
   request.send(null);
@@ -86,6 +88,37 @@ function requestApi(role, data) {
   // })
 }
 
+function callConv(token,data) {
+  $.ajax({
+    type: 'POST',
+    url: url,
+    data: JSON.stringify(data),
+    dataType: 'json',
+    headers:{
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'x-watson-authorization-token': token
+    },
+
+    xhrFields: {
+      withCredentials: true
+    },
+
+    // 200 OK
+    success: function (json_data) {   
+      console.log(json_data.output.text[0]);
+      context = json_data.context;
+      addMessage(role, json_data.output.text[0]);
+    },
+    // HTTP Error
+    error: function () {         
+      alert("Error Occurred. Reload Browser & Try Again.");
+    },
+
+    complete: function () {      
+    }
+  })
+}
 
 function addMessage(role, text) {
   var imageDiv   = "<div id='icon' class='media-" + roleParam[role]["side"] + "'><img src='img/" + roleParam[role]["image"] + "'></div>";
