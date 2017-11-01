@@ -35,35 +35,55 @@ function connect() {
 
 function requestApi(role, data) {
 
-  $.ajax({
-    type: 'POST',
-    url: url,
-    data: JSON.stringify(data),
-    dataType: 'json',
-    headers:{
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: "Basic " + credential
-    },
+  var request = new XMLHttpRequest();
 
-    xhrFields: {
-      withCredentials: true
-    },
-    
-    // 200 OK
-    success: function (json_data) {   
-      console.log(json_data.output.text[0]);
-      context = json_data.context;
-      addMessage(role, json_data.output.text[0]);
-    },
-    // HTTP Error
-    error: function () {         
-      alert("Error Occurred. Reload Browser & Try Again.");
-    },
-
-    complete: function () {      
+  request.open("GET", "https://gateway.watsonplatform.net/authorization/api/v1/token?url=https://gateway.watsonplatform.net/conversation/api", true, username, password);
+  // request.setRequestHeader('Authorization', 'Basic ' + credential);
+  //request.setRequestHeader('Content-Type', 'application/json');
+  //request.withCredentials = true;
+  request.onreadystatechange = function () {
+    if (request.readyState != 4) {
+      // リクエスト中
+    } else if (request.status != 200) {
+      console.log(request);
+    } else {
+      // 取得成功
+      console.log(request);
+      json = JSON.parse(request.responseText);
+      addMessage(role, json.output.text);
     }
-  })
+  };
+  request.send(null);
+
+  // $.ajax({
+  //   type: 'POST',
+  //   url: url,
+  //   data: JSON.stringify(data),
+  //   dataType: 'json',
+  //   headers:{
+  //     Accept: 'application/json',
+  //     'Content-Type': 'application/json',
+  //     Authorization: "Basic " + credential
+  //   },
+
+  //   xhrFields: {
+  //     withCredentials: true
+  //   },
+    
+  //   // 200 OK
+  //   success: function (json_data) {   
+  //     console.log(json_data.output.text[0]);
+  //     context = json_data.context;
+  //     addMessage(role, json_data.output.text[0]);
+  //   },
+  //   // HTTP Error
+  //   error: function () {         
+  //     alert("Error Occurred. Reload Browser & Try Again.");
+  //   },
+
+  //   complete: function () {      
+  //   }
+  // })
 }
 
 
