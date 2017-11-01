@@ -91,7 +91,7 @@ function requestApi(role, data) {
 function callConv(token,data) {
   $.ajax({
     type: 'POST',
-    url: url,
+    url: "http://relayforcors.azurewebsites.net/?url="+ url,
     data: JSON.stringify(data),
     dataType: 'json',
     headers:{
