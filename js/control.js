@@ -37,7 +37,7 @@ function requestApi(role, data) {
 
   var request = new XMLHttpRequest();
 
-  request.open("GET", "https://gateway.watsonplatform.net/authorization/api/v1/token?url=https://gateway.watsonplatform.net/conversation/api", true, username, password);
+  request.open("GET", "http://relayforcors.azurewebsites.net/?url=https://gateway.watsonplatform.net/authorization/api/v1/token?url=https://gateway.watsonplatform.net/conversation/api", true, username, password);
   // request.setRequestHeader('Authorization', 'Basic ' + credential);
   //request.setRequestHeader('Content-Type', 'application/json');
   //request.withCredentials = true;
