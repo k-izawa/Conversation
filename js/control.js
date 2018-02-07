@@ -37,7 +37,7 @@ function requestApi(role, data) {
 
   var request = new XMLHttpRequest();
 
-  request.open("GET", "http://relayforcors.azurewebsites.net/?url=https://"+username+":"+password+"@gateway.watsonplatform.net/authorization/api/v1/token?url=https://gateway.watsonplatform.net/conversation/api");
+  request.open("POST", "https://discoverypoc.azurewebsites.net/api/HttpTriggerJS1?code=cECVaHpwWOZ9ZIlbKa4UByrFQWMHSYmla7KvtbUdcG0Xttr7cHW3uQ==");
   // request.setRequestHeader('Authorization', 'Basic ' + credential);
   //request.setRequestHeader('Content-Type', 'application/json');
   //request.withCredentials = true;
@@ -51,7 +51,7 @@ function requestApi(role, data) {
       console.log(request);
       json = JSON.parse(request.responseText);
       console.log(json.token);
-      callConv(json.token,data);
+//      callConv(json.token,data);
 //      addMessage(role, json.output.text);
     }
   };
