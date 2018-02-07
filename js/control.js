@@ -37,7 +37,7 @@ function requestApi(role, data) {
 
   var request = new XMLHttpRequest();
 
-  request.open("POST", "https://discoverypoc.azurewebsites.net/api/HttpTriggerJS1?code=cECVaHpwWOZ9ZIlbKa4UByrFQWMHSYmla7KvtbUdcG0Xttr7cHW3uQ==");
+  request.open("GET", "http://relayforcors.azurewebsites.net/?url=https://discoverypoc.azurewebsites.net/api/HttpTriggerJS1?code=cECVaHpwWOZ9ZIlbKa4UByrFQWMHSYmla7KvtbUdcG0Xttr7cHW3uQ==");
   // request.setRequestHeader('Authorization', 'Basic ' + credential);
   //request.setRequestHeader('Content-Type', 'application/json');
   //request.withCredentials = true;
