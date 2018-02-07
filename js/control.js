@@ -50,7 +50,7 @@ function requestApi(role, data) {
       // 取得成功
       console.log(request);
       json = JSON.parse(request.responseText);
-      console.log(json.token);
+      console.log(json);
 //      callConv(json.token,data);
 //      addMessage(role, json.output.text);
     }
